@@ -9,6 +9,7 @@ namespace WordAssignment.Tests
     {
         private readonly string _textWithPunctuation = "' thought Alice 'without pictures or conversation?'So she was considering in her own mind";
         private readonly string _textWithOutPunctuation = "herself before she found herself falling down a very ";
+        private readonly string _textWithOutWhitespace = "herself.before.she.found.herself.falling.down.a.very";
 
 
         [TestMethod]
@@ -66,7 +67,7 @@ namespace WordAssignment.Tests
                 .Filter(Arg.Any<string>())
                 .Returns(false, false, false, false, false, false, false, true, false);
 
-            var output = sut.ApplyWordFilters(_textWithOutPunctuation);
+            var output = sut.ApplyWordFilters(_textWithOutWhitespace);
 
             wordLengthFilter.Received(9).Filter(Arg.Any<string>());
 
